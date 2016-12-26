@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Menu } from 'semantic-ui-react';
+import ToggleDisplay from 'react-toggle-display';
 
 import Tab from './Tab';
 
@@ -24,6 +25,14 @@ function TabBar({
           );
         })}
       </Menu>
+      {tabs.map((tab) => {
+        const { name, component: TabComponent } = tab;
+        return (
+          <ToggleDisplay show={name === currentTab} key={name}>
+            <TabComponent />
+          </ToggleDisplay>
+        );
+      })}
     </div>
   );
 }
