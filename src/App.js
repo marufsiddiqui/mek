@@ -1,17 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  Header,
+  Container,
+} from 'semantic-ui-react';
+
+import TabContainer from './features/tabs/TabBarContainer';
+
 import './App.css';
 
-import SampleComponent from './SampleComponent';
+const tabs = [
+  { name: 'unitInfo', label: 'Unit Info' },
+  { name: 'pilots', label: 'Pilots' },
+  { name: 'mechs', label: 'Mechs' },
+  { name: 'unitOrganization', label: 'Unit Organization' },
+];
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
+        <Header inverted as="h1">Project Mini-Mek</Header>
       </div>
-      <SampleComponent />
+      <Container>
+        <TabContainer tabs={tabs} size="massive" />
+      </Container>
     </div>
   );
 }
