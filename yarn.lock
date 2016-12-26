@@ -4368,6 +4368,10 @@ react-scripts@0.8.4:
   optionalDependencies:
     fsevents "1.0.14"
 
+react-toggle-display@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-toggle-display/-/react-toggle-display-2.1.1.tgz#8a36f6f482c8e3cc5283e7ecfed527cb251561dc"
+
 react@^15.4.1:
   version "15.4.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.1.tgz#498e918602677a3983cd0fd206dfe700389a0dd6"
