@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import RedBox from 'redbox-react';
 import { Provider } from 'react-redux';
 
-import './index.css';
+import 'semantic-ui-css/semantic.css';
 
 import configureStore from './store/configureStore';
 
