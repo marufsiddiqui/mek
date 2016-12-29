@@ -7,7 +7,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-import {selectUnitInfo} from './unitInfoSelectors';
+import { selectUnitInfo } from '../unitInfoSelectors';
 
 const FACTIONS = [
   { value: 'lc', text: 'Lyran Commonwealth' },
