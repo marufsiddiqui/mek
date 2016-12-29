@@ -26,7 +26,7 @@ export class Pilots extends Component {
   };
 
   render() {
-    const pilots = this.state.pilots;
+    const { pilots } = this.state;
     const currentPilot= pilots[0] || {};
 
     return (
