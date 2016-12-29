@@ -10,6 +10,8 @@ import Pilots from 'features/pilots/Pilots';
 import Mechs from 'features/mechs/Mechs';
 import UnitOrganization from 'features/unitOrganization/UnitOrganization';
 
+import Tools from 'features/tools/Tools';
+
 import './App.css';
 
 const tabs = [
@@ -17,6 +19,7 @@ const tabs = [
   { name: 'pilots', label: 'Pilots', component: Pilots },
   { name: 'mechs', label: 'Mechs', component: Mechs },
   { name: 'unitOrganization', label: 'Unit Organization', component: UnitOrganization },
+  { name: 'tools', label: 'Tools', component: Tools },
 ];
 
 function App() {
