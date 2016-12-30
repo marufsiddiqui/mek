@@ -6,28 +6,15 @@ import {
   Header,
 } from 'semantic-ui-react';
 
+import schema from 'app/schema';
+
 import PilotList from './PilotsList';
 import PilotDetails from './PilotDetails';
 
-const pilots = [
-  {
-    name: 'James Baker',
-    rank: 'Captain',
-    age: 52,
-    gunnery: 2,
-    piloting: 3,
-    mechType: 'WHM-6R',
-  },
-];
-
 export class Pilots extends Component {
-  state = {
-    pilots: pilots,
-  };
-
   render() {
-    const { pilots } = this.state;
-    const currentPilot= pilots[0] || {};
+    const { pilots = [] } = this.props;
+    const currentPilot = pilots[0] || {};
 
     return (
       <Segment>
@@ -48,4 +35,11 @@ export class Pilots extends Component {
   }
 }
 
-export default connect()(Pilots);
+const mapStateToProps = (state) => {
+  const session = schema.from(state.entities);
+  const { Pilot } = session;
+  const pilots = Pilot.all().toRefArray();
+  return { pilots };
+};
+
+export default connect(mapStateToProps)(Pilots);
