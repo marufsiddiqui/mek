@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   Grid,
@@ -11,28 +11,26 @@ import schema from 'app/schema';
 import PilotList from './PilotsList';
 import PilotDetails from './PilotDetails';
 
-export class Pilots extends Component {
-  render() {
-    const { pilots = [] } = this.props;
-    const currentPilot = pilots[0] || {};
+export function Pilots(props) {
+  const { pilots = [] } = props;
+  const currentPilot = pilots[0] || {};
 
-    return (
-      <Segment>
-        <Grid>
-          <Grid.Column width={10}>
-            <Header as="h3">Pilot List</Header>
-            <PilotList pilots={pilots} />
-          </Grid.Column>
-          <Grid.Column width={6}>
-            <Header as="h3">Pilot Details</Header>
-            <Segment >
-              <PilotDetails pilot={currentPilot}/>
-            </Segment>
-          </Grid.Column>
-        </Grid>
-      </Segment>
-    );
-  }
+  return (
+    <Segment>
+      <Grid>
+        <Grid.Column width={10}>
+          <Header as="h3">Pilot List</Header>
+          <PilotList pilots={pilots} />
+        </Grid.Column>
+        <Grid.Column width={6}>
+          <Header as="h3">Pilot Details</Header>
+          <Segment >
+            <PilotDetails pilot={currentPilot} />
+          </Segment>
+        </Grid.Column>
+      </Grid>
+    </Segment>
+  );
 }
 
 const mapStateToProps = (state) => {
