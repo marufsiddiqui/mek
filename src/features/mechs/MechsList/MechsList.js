@@ -5,9 +5,14 @@ import MechsListHeader from './MechsListHeader';
 import MechsListRow from './MechsListRow';
 
 function MechsList(props) {
-  const { mechs = [] } = props;
+  const { mechs = [], onMechClicked, currentMech } = props;
   const mechRows = mechs.map(mech =>
-    <MechsListRow mech={mech} key={mech.id} />,
+    <MechsListRow
+      mech={mech}
+      key={mech.id}
+      onMechClicked={onMechClicked}
+      selected={mech.id === currentMech}
+    />,
   );
   return (
     <Table celled>

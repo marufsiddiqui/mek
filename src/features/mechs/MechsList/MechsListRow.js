@@ -5,6 +5,8 @@ import { getWeightClass } from '../mechSelectors';
 
 function MechsListRow({
   mech = {},
+  onMechClicked,
+  selected,
 }) {
   const {
     id = '',
@@ -20,7 +22,7 @@ function MechsListRow({
   const weightClass = getWeightClass(weight);
 
   return (
-    <Table.Row>
+    <Table.Row onClick={() => onMechClicked(id)} active={selected}>
       <Table.Cell>
         {id}
       </Table.Cell>
