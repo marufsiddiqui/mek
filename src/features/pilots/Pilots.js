@@ -36,7 +36,16 @@ export function Pilots(props) {
 const mapStateToProps = (state) => {
   const session = schema.from(state.entities);
   const { Pilot } = session;
-  const pilots = Pilot.all().toRefArray();
+  const pilots = Pilot.all().withModels.map((pilotModel) => {
+    const pilot = { ...pilotModel.ref };
+    const { mech } = pilotModel;
+
+    if (mech && mech.type) {
+      pilot.mechType = mech.type.id;
+    }
+
+    return pilot;
+  });
   return { pilots };
 };
 
