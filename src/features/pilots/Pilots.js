@@ -7,25 +7,30 @@ import {
 } from 'semantic-ui-react';
 
 import schema from 'app/schema';
+import { selectPilot } from './pilotsActions';
+import { selectCurrentPilot } from './pilotsSelectors';
 
 import PilotList from './PilotsList';
 import PilotDetails from './PilotDetails';
 
 export function Pilots(props) {
-  const { pilots = [] } = props;
-  const currentPilot = pilots[0] || {};
-
+  const { pilots = [], selectPilot, currentPilot } = props;
+  const currentPilotEntry = pilots.find(pilot => pilot.id === currentPilot) || {};
   return (
     <Segment>
       <Grid>
         <Grid.Column width={10}>
           <Header as="h3">Pilot List</Header>
-          <PilotList pilots={pilots} />
+          <PilotList
+            onPilotClicked={selectPilot}
+            currentPilot={currentPilot}
+            pilots={pilots}
+          />
         </Grid.Column>
         <Grid.Column width={6}>
           <Header as="h3">Pilot Details</Header>
           <Segment >
-            <PilotDetails pilot={currentPilot} />
+            <PilotDetails pilot={currentPilotEntry} />
           </Segment>
         </Grid.Column>
       </Grid>
@@ -46,7 +51,12 @@ const mapStateToProps = (state) => {
 
     return pilot;
   });
-  return { pilots };
+
+  const currentPilot = selectCurrentPilot(state);
+
+  return { pilots, currentPilot };
 };
 
-export default connect(mapStateToProps)(Pilots);
+const mapDispatchToProps = { selectPilot };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pilots);

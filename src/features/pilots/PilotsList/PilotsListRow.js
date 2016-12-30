@@ -1,8 +1,14 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
+import { noop } from 'lodash';
 
-function PilotsListRow({ pilot = {} }) {
+function PilotsListRow({
+  pilot = {},
+  onPilotClicked = noop,
+  selected,
+}) {
   const {
+    id = null,
     name = '',
     rank = '',
     age = '',
@@ -12,7 +18,7 @@ function PilotsListRow({ pilot = {} }) {
   } = pilot;
 
   return (
-    <Table.Row>
+    <Table.Row onClick={() => onPilotClicked(id)} active={selected}>
       <Table.Cell>
         {name}
       </Table.Cell>
