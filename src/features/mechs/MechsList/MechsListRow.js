@@ -8,10 +8,14 @@ function MechsListRow({
 }) {
   const {
     id = '',
-    name = '',
     type = '',
-    weight = '',
+    mechType = '',
   } = mech;
+
+  const {
+    name = '',
+    weight = '',
+  } = mechType;
 
   const weightClass = getWeightClass(weight);
 
