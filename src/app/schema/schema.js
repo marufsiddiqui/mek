@@ -1,7 +1,7 @@
-import { ORM } from 'redux-orm';
+import { Schema } from 'redux-orm';
 import Pilot from 'features/pilots/Pilot';
 
-const schema = new ORM();
+const schema = new Schema();
 schema.register(Pilot);
 
 export default schema;
