@@ -8,7 +8,7 @@ export function loadData(state, { pilots }) {
   const session = schema.from(state);
   const { Pilot } = session;
 
-  pilots.forEach(Pilot.parse);
+  pilots.forEach(pilot => Pilot.parse(pilot));
 
   return session.reduce();
 }
